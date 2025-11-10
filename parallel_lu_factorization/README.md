@@ -1,52 +1,85 @@
-# LU Factorization with OpenMP
+# Parallel LU Factorization Using OpenMP
 
-This project implements **LU decomposition** (factorization) of a square matrix using both **serial** and **parallel** approaches in C. The parallel version uses **OpenMP** for multi-threading. The goal is to compare execution times and demonstrate speedup with parallelization.
+A high-performance implementation of LU matrix decomposition with OpenMP parallelization for comparing serial and parallel execution efficiency in scientific computing applications.
 
-**Course**: High-Performance Computing  
-**Authors**: [Your Name(s)]  
-**Language**: C with OpenMP
+**Academic Project**: Uppsala University - High-Performance Parallel Computing - VT2023
 
----
+**Author**: Gabrielle Fidelis de Castilho
 
-## 📌 Overview
-LU factorization decomposes a matrix **A** into two matrices:
-- **L**: Lower triangular matrix
-- **U**: Upper triangular matrix  
-such that **A = L × U**.
+## Overview
 
-This project:
-- Generates a random square matrix.
-- Performs LU decomposition **serially** and **in parallel**.
-- Measures and prints execution times for both versions.
+This project implements LU (Lower-Upper) factorization, a fundamental matrix decomposition technique used in solving systems of linear equations, computing determinants, and matrix inversion. The implementation provides both serial and parallel versions using OpenMP, allowing for direct performance comparison and scalability analysis across different matrix sizes and thread counts.
 
----
+LU decomposition factorizes a matrix **A** into the product of a lower triangular matrix **L** and an upper triangular matrix **U**, such that **A = LU**.
 
-## ✅ Features
-- **Serial LU decomposition** for baseline performance.
-- **Parallel LU decomposition** using OpenMP.
-- Handles input validation for:
-  - Matrix size (2 ≤ n ≤ 2000)
-  - Number of threads (1 ≤ threads ≤ available cores)
-- Reports timing for both implementations.
+## Key Features
 
----
+* **Dual Implementation**: Both serial and OpenMP-parallelized versions for performance benchmarking
+* **Scalable Parallelization**: Configurable thread count up to available CPU cores
+* **Large Matrix Support**: Handles matrices up to 2000×2000 elements
+* **Performance Measurement**: Wall-clock timing for accurate execution time comparison
+* **Reproducible Results**: Fixed random seed (42) for consistent matrix generation
 
-## 📂 Files
-- `main.c` – Source code for LU factorization.
-- `Makefile` – Build and execution instructions.
+## Installation
 
----
+### Prerequisites
+```bash
+GCC compiler with OpenMP support (gcc 4.2+)
+Linux/Unix environment
+```
 
-## 🔧 Requirements
-- **GCC** with OpenMP support
-- Linux or macOS environment
-- Basic C development tools
-
----
-
-## ▶️ Compilation & Execution
-Use the provided **Makefile**:
-
-### Build:
+### Compilation
+Build using the provided Makefile:
 ```bash
 make
+```
+
+This compiles the program with the following optimizations:
+
+**Compiler Flags:**
+* `-fopenmp`: Enable OpenMP support
+* `-O3`: Highest optimization level for maximum performance
+* `-Wall -Wextra -Wpedantic`: Comprehensive warning detection
+* `-fsanitize=address,leak`: Memory safety checking (development mode)
+* `-lm`: Link math library
+
+**Clean Build:**
+```bash
+make clean    # Remove object files and executable
+make          # Rebuild from scratch
+```
+
+## Usage
+
+### Running the Program
+
+```bash
+./lu [matrix side] [threads]
+```
+
+**Parameters:**
+* `matrix side`: Integer between 2 and 2000 (matrix dimensions)
+* `threads`: Integer between 1 and number of available CPU cores
+
+**Quick Test:**
+
+```bash
+make execute    # Runs with default parameters: 500x500 matrix, 4 threads
+```
+
+### Example Session
+
+```bash
+$ ./lu 500 8
+Serial LU time:   0.075 seconds
+Parallel LU time: 0.062 seconds
+```
+
+## Project Structure
+
+```
+parallel_lu_factorization/
+├── main.c                    # Complete implementation
+├── makefile                  # Build configuration
+└── README.md                 # This file
+```
