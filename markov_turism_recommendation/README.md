@@ -2,7 +2,7 @@
 
 A Markov chain-based recommendation system for Indonesian tourism destinations that combines probabilistic modeling with collaborative and content-based filtering to provide personalized travel recommendations.
 
-**Academic Project**: Uppsala University - Artificial Intelligence (1DL340) - HT2023
+**Academic Project**: Uppsala University - Artificial Intelligence - HT2023
 
 **Authors**: Gabrielle Fidelis de Castilho, Hemavathi Hanasoge Siddaiah, Kim Kuruvilla Mathews
 
@@ -39,19 +39,6 @@ Python 3.7+
 pip install pandas numpy scikit-learn
 ```
 
-## Project Structure
-
-```
-markov_tourism_recommendation/
-├── main.py                          # Main recommendation system
-├── documentation.py                 # Function documentation
-├── test_recommendations.py          # Basic functionality tests
-├── test_accuracy.py                 # Accuracy validation tests
-├── data_preprocessing.ipynb         # Data preprocessing notebook
-├── ai_project_report.pdf            # Full academic report
-└── README.md                        # This file
-```
-
 ## Usage
 
 ### Running the Recommendation System
@@ -79,6 +66,19 @@ Top Recommendations:
 {123: 'Ragunan Zoo', 145: 'Thousand Islands', 89: 'Ancol Beach', 201: 'Taman Mini Indonesia', 156: 'Pulau Seribu Marine Park'}
 ```
 
+## Project Structure
+
+```
+markov_tourism_recommendation/
+├── main.py                          # Main recommendation system
+├── documentation.py                 # Function documentation
+├── test_recommendations.py          # Basic functionality tests
+├── test_accuracy.py                 # Accuracy validation tests
+├── data_preprocessing.ipynb         # Data preprocessing notebook
+├── ai_project_report.pdf            # Full academic report
+└── README.md                        # This file
+```
+
 ## Documentation
 
 Complete academic documentation including methodology, results, analysis, and references is available in:
@@ -87,3 +87,4 @@ Complete academic documentation including methodology, results, analysis, and re
 - Dataset provided by [Aprabowo on Kaggle](https://www.kaggle.com/datasets/aprabowo/indonesia-tourism-destination/data)
 - Course instructors at Uppsala University Department of Information Technology
 - Research foundations from Ricci et al. and Liu et al. on recommender systems
+
