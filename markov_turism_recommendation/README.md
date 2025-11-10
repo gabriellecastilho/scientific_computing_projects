@@ -1,45 +1,89 @@
 # Holiday Recommendation System Using Markov Chains
 
-A simple recommendation system for Indonesian tourism destinations using **Markov chains** combined with **age-based collaborative filtering** and **budget awareness**. This project was developed as part of the **Artificial Intelligence (1DL340)** course at **Uppsala University**.
+A Markov chain-based recommendation system for Indonesian tourism destinations that combines probabilistic modeling with collaborative and content-based filtering to provide personalized travel recommendations.
+
+**Academic Project**: Uppsala University - Artificial Intelligence (1DL340) - HT2023
 
 **Authors**: Gabrielle Fidelis de Castilho, Hemavathi Hanasoge Siddaiah, Kim Kuruvilla Mathews
 
----
+## Overview
 
-## 📌 Overview
-This system suggests tourist attractions based on:
-- **User visit history**
-- **Age group preferences**
-- **Spending patterns**
-- **Destination ratings**
+This project implements a recommendation system that suggests tourist attractions based on user visit history, age demographics, spending patterns, and destination ratings. The system uses Markov chains to model category transition probabilities, capturing the likelihood of users moving from one type of attraction to another, combined with collaborative filtering to rank specific destinations.
 
-The main idea:
-- Use **Markov chains** to predict the next category of attraction (e.g., Culture → Natural Reserve).
-- Rank places within that category using **collaborative filtering by age** and **budget constraints**.
+## Key Features
 
----
+- **Markov Chain Category Prediction**: Models transitions between attraction categories (Culture, Amusement Park, Natural Reserve, etc.)
+- **Age-Based Collaborative Filtering**: Recommends attractions highly rated by users in similar age ranges
+- **Budget-Aware Recommendations**: Filters suggestions based on user's historical spending patterns (within 2x average)
+- **Visit History Tracking**: Ensures only new, unvisited attractions are recommended
+- **Multi-City Support**: Works across Jakarta, Yogyakarta, Semarang, Bandung, and Surabaya
+- **Cold Start Handling**: Provides equal probability recommendations for new users without history
 
-## ✅ Features
-- **Markov Chain Category Prediction**: Calculates transition probabilities between attraction categories.
-- **Age-Based Collaborative Filtering**: Prioritizes places rated highly by users in the same age range.
-- **Budget Awareness**: Filters out places that cost more than twice the user’s average spending.
-- **Visit History Tracking**: Avoids recommending places the user has already visited.
-- **Cold Start Handling**: For new users, assigns equal probabilities to all categories.
-- **Multi-City Support**: Works for Jakarta, Yogyakarta, Semarang, Bandung, and Surabaya.
+## Dataset
 
----
+The system uses the [Indonesia Tourism Destination dataset](https://www.kaggle.com/datasets/aprabowo/indonesia-tourism-destination/data) from Kaggle, containing:
 
-## 📂 Dataset
-We use the [Indonesia Tourism Destination dataset(mirrored on GitHub for convenience):
-- **437 attractions** across 5 cities
-- **300 users** with age and location info
-- **10,000 ratings**
+- **437 tourist attractions** across 5 major Indonesian cities
+- **300 users** with demographic information (age, location)
+- **10,000 user ratings** for various destinations
 
----
+## Installation
 
-## 🔧 Installation
 ### Prerequisites
-- Python 3.7+
-- Install required libraries:
+```bash
+Python 3.7+
+```
+
+### Required Libraries:
 ```bash
 pip install pandas numpy scikit-learn
+```
+
+## Project Structure
+
+```
+markov_tourism_recommendation/
+├── main.py                          # Main recommendation system
+├── documentation.py                 # Function documentation
+├── test_recommendations.py          # Basic functionality tests
+├── test_accuracy.py                 # Accuracy validation tests
+├── data_preprocessing.ipynb         # Data preprocessing notebook
+├── ai_project_report.pdf            # Full academic report
+└── README.md                        # This file
+```
+
+## Usage
+
+### Running the Recommendation System
+
+```bash
+python main.py
+```
+
+The program prompts for:
+1. **User ID** (1-300, or enter a new ID for cold start scenario)
+2. **Current Category** (the category the user is currently viewing)
+3. **City** (the city where recommendations are needed)
+
+### Example Session
+
+```
+Add User ID (1 to 300): 15
+Add Category (Culture, Amusement Park, Natural Reserve, Nautical, Place of Worship, Shopping Center): Culture
+Add City (Jakarta, Bandung, Surabaya, Yogyakarta, Semarang): Jakarta
+
+Category Recommended:
+Natural Reserve
+
+Top Recommendations:
+{123: 'Ragunan Zoo', 145: 'Thousand Islands', 89: 'Ancol Beach', 201: 'Taman Mini Indonesia', 156: 'Pulau Seribu Marine Park'}
+```
+
+## Documentation
+
+Complete academic documentation including methodology, results, analysis, and references is available in:
+- **[project_report.pdf](project_report.pdf)** - Full project report (14 pages)
+- **[documentation.py](documentation.py)** - Comprehensive function documentation with usage examples
+- Dataset provided by [Aprabowo on Kaggle](https://www.kaggle.com/datasets/aprabowo/indonesia-tourism-destination/data)
+- Course instructors at Uppsala University Department of Information Technology
+- Research foundations from Ricci et al. and Liu et al. on recommender systems
