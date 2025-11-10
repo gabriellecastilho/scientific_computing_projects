@@ -10,7 +10,6 @@ double get_wall_seconds() {
     gettimeofday(&tv, NULL);
     return tv.tv_sec + (double)tv.tv_usec / 1000000;
 }
-
     
 // Performing serial LU factorization
 void LU_serial(double **A, double **L, double **U, int n) {
@@ -91,7 +90,6 @@ void LU_parallel(double **A, double **L, double **U, int n) {
     }
 }
 
-
 int main(int argc, char *argv[]) {
     // Checking if parameters are correct
     if (argc != 3) {
@@ -114,7 +112,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    if (threads > 0) omp_set_num_threads(threads);
+    omp_set_num_threads(threads);
 
     // Allocating memory for matrices
     double **A = malloc(n * sizeof(double *));
@@ -163,4 +161,5 @@ int main(int argc, char *argv[]) {
     free(U);
 
     return 0;
+
 }
